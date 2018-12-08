@@ -15,7 +15,7 @@ public class Main {
         Matcher m = new Or(new HasAtLeast(40, "goals"),
                 new HasAtLeast(60, "assists"),
                 new HasAtLeast(85, "points")
-        );*/
+        );
         Matcher m = new Not(new HasAtLeast(1, "goals"));
 
         for (Player player : stats.matches(m)) {
@@ -24,6 +24,16 @@ public class Main {
 
         for (Player player : stats.matches(m)) {
             System.out.println(player);
-        }
+        }*/
+        
+        QueryBuilder query = new QueryBuilder();
+ 
+    Matcher m = query.playsIn("NYR")
+                     .hasAtLeast(10, "goals")
+                     .hasFewerThan(25, "goals").build();
+ 
+    for (Player player : stats.matches(m)) {
+        System.out.println( player );
+    }
     }
 }
