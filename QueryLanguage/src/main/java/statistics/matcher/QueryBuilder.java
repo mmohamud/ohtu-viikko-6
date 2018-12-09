@@ -19,6 +19,11 @@ public class QueryBuilder {
         matcher = new And(new All());
     }
     
+    public QueryBuilder oneOf(Matcher... matchers) {
+        this.matcher = new Or(matchers);
+        return this;
+    }
+    
     public Matcher build() {
         return matcher;
     }
